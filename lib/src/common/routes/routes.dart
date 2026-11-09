@@ -10,9 +10,6 @@ class Routes {
   final GoRouter _routes = GoRouter(
     debugLogDiagnostics: true,
     initialLocation: home,
-    routes: [
-      ...CompassRoutes().routes,
-      ...SettingRoutes().routes,
-    ],
+    routes: [...CompassRoutes().routes, ...SettingRoutes().routes],
   );
 }

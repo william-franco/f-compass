@@ -114,10 +114,7 @@ class _CompassViewState extends State<CompassView> {
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  cardinal,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text(cardinal, style: Theme.of(context).textTheme.titleLarge),
               ],
             ),
           );

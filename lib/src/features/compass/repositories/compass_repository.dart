@@ -27,7 +27,9 @@ class CompassRepositoryImpl implements CompassRepository {
   }
 
   @override
-  void setHeadingUpdateListener(Future<void> Function(double heading) callback) {
+  void setHeadingUpdateListener(
+    Future<void> Function(double heading) callback,
+  ) {
     _channel.setMethodCallHandler((call) async {
       if (call.method == 'updateHeading') {
         final value = call.arguments;

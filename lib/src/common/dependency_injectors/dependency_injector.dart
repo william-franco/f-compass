@@ -1,4 +1,5 @@
 import 'package:f_compass/src/common/services/storage_service.dart';
+import 'package:f_compass/src/common/services/url_launcher_service.dart';
 import 'package:f_compass/src/features/compass/repositories/compass_repository.dart';
 import 'package:f_compass/src/features/compass/view_models/compass_view_model.dart';
 import 'package:f_compass/src/features/settings/repositories/setting_repository.dart';
@@ -8,6 +9,9 @@ import 'package:get_it/get_it.dart';
 final locator = GetIt.instance;
 
 void dependencyInjector() {
+  locator.registerLazySingleton<UrlLauncherService>(
+    () => UrlLauncherServiceImpl(),
+  );
   _startStorageService();
   _startFeatureCompass();
   _startFeatureSetting();
@@ -18,7 +22,9 @@ void _startStorageService() {
 }
 
 void _startFeatureCompass() {
-  locator.registerCachedFactory<CompassRepository>(() => CompassRepositoryImpl());
+  locator.registerCachedFactory<CompassRepository>(
+    () => CompassRepositoryImpl(),
+  );
   locator.registerLazySingleton<CompassViewModel>(
     () => CompassViewModelImpl(compassRepository: locator<CompassRepository>()),
   );
@@ -26,7 +32,10 @@ void _startFeatureCompass() {
 
 void _startFeatureSetting() {
   locator.registerCachedFactory<SettingRepository>(
-    () => SettingRepositoryImpl(storageService: locator<StorageService>()),
+    () => SettingRepositoryImpl(
+      storageService: locator<StorageService>(),
+      urlLauncherService: locator<UrlLauncherService>(),
+    ),
   );
   locator.registerLazySingleton<SettingViewModel>(
     () => SettingViewModelImpl(settingRepository: locator<SettingRepository>()),
