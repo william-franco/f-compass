@@ -4,7 +4,7 @@ import 'package:f_compass/src/common/state_management/state_management.dart';
 import 'package:f_compass/src/features/compass/models/compass_model.dart';
 import 'package:f_compass/src/features/compass/view_models/compass_view_model.dart';
 import 'package:f_compass/src/features/settings/routes/setting_routes.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class CompassView extends StatefulWidget {
